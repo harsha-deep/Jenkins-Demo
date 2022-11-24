@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Check environment') {
             steps {
-                python3 --version
+                echo "Hello World"
             }
         }
         stage('Clone Git') {
