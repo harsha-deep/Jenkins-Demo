@@ -9,19 +9,19 @@ pipeline {
         stage('Code Build add') {
             steps {
                 sh 'chmod u+x adder.py'
-                sh './adder.py'
+                sh 'python3 adder.py'
             }
         }
         stage('Code Build mult') {
             steps {
                 sh 'chmod u+x mult.py'
-                sh './mult.py'
+                sh 'python3 mult.py'
             }
         }
         stage('Test Code') {
             steps {
                 sh 'chmod u+x test.py'
-                sh './test.py'
+                sh 'python3 test.py'
             }
         }
     }
