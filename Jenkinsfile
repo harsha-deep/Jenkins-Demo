@@ -1,20 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Check environment') {
-            steps {
-                echo "Hello World"
-            }
-        }
         stage('Clone Git') {
             steps {
                 git 'https://github.com/harsha-deep/Jenkins-Demo.git'
             }
         }
-        stage('Build Code') {
+        stage('Code Build add') {
             steps {
-                sh 'chmod u+x main.py'
-                sh './main.py'
+                sh 'chmod u+x adder.py'
+                sh './adder.py'
+            }
+        }
+        stage('Code Build mult') {
+            steps {
+                sh 'chmod u+x mult.py'
+                sh './mult.py'
             }
         }
         stage('Test Code') {
