@@ -1,0 +1,79 @@
+Started by user Harshadeep Donapati
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Jenkins Demo Test 1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone Git)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Jenkins Demo Test 1/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/harsha-deep/Jenkins-Demo.git # timeout=10
+Fetching upstream changes from https://github.com/harsha-deep/Jenkins-Demo.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/harsha-deep/Jenkins-Demo.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision ff35459e4972c5ccc32ebcaf1d06bd168684d41c (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ff35459e4972c5ccc32ebcaf1d06bd168684d41c # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master ff35459e4972c5ccc32ebcaf1d06bd168684d41c # timeout=10
+Commit message: "Update test.py"
+ > git rev-list --no-walk 20fb1a487a38bcb1e2e22648fcae48910e9668c9 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Code Build add)
+[Pipeline] sh
++ chmod u+x adder.py
+[Pipeline] sh
++ python3 adder.py
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Code Build mult)
+[Pipeline] sh
++ chmod u+x mult.py
+[Pipeline] sh
++ python3 mult.py
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Code)
+[Pipeline] sh
++ chmod u+x test.py
+[Pipeline] sh
++ python3 test.py
+...FF
+======================================================================
+FAIL: test_multiplication_2 (__main__.Test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/lib/jenkins/workspace/Jenkins Demo Test 1/test.py", line 25, in test_multiplication_2
+    self.assertEqual(multiply(lst[0], lst[1]), result)
+AssertionError: 64 != 72
+
+======================================================================
+FAIL: test_multiplication_3 (__main__.Test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/lib/jenkins/workspace/Jenkins Demo Test 1/test.py", line 30, in test_multiplication_3
+    self.assertEqual(multiply(lst[0], lst[1]), result)
+AssertionError: 90 != 100
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=2)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
