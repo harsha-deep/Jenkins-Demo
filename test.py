@@ -24,7 +24,7 @@ class Test(unittest.TestCase):
         result = 72
         self.assertEqual(multiply(lst[0], lst[1]), result)
         
-    def test_multiplication_2(self):
+    def test_multiplication_3(self):
         lst = [10, 9]
         result = 100
         self.assertEqual(multiply(lst[0], lst[1]), result)
